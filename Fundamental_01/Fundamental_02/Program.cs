@@ -4,17 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fundamental_01
+namespace Fundamental_02
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello from Visual Studio ");
-            if (true)
-            {
-                Console.WriteLine("Hello again"+args[0]);
-            }
+            Console.WriteLine("Give me your name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("heloo");
+
         }
     }
 }
