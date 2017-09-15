@@ -11,6 +11,10 @@ namespace Fundamental_01
         static void Main(string[] args)
         {
             Console.WriteLine("Hello from Visual Studio ");
+            if (true)
+            {
+                Console.WriteLine("Hello again");
+            }
         }
     }
 }
