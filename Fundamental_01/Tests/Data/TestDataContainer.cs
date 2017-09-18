@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
-using System.Runtime.Serialization.;
+using System.Web.Script.Serialization;
+using System.Runtime.Serialization;
+
 
 
 namespace Tests.Data
@@ -17,10 +18,19 @@ namespace Tests.Data
 
         
 
-        public void SerializeTestList(string name)
+        public string SerializeTestList(string build)
         {
-            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Lista));        
+            string json = null;
+            return json = new JavaScriptSerializer().Serialize(lista).ToString();
         }
+
+
+        public List<TestData> Deserialization(string json)
+        {
+            lista = new JavaScriptSerializer().Deserialize<List<TestData>>(json);
+            return lista;
+        }
+
 
         public TestDataContainer()
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Tests
 {
     [TestFixture]
-    public class NewTest2:ITest
+    public class NewTest2
     {
         public void Assert()
         {
@@ -20,16 +20,8 @@ namespace Tests
             throw new NotImplementedException();
         }
 
-        public void Run(ITest test)
-        {
-            throw new NotImplementedException();
-        }
+     
 
-        [Test]
-        public void TestMethod()
-        {
-            // TODO: Add your test code here
-            Assert.Pass("Your first passing test");
-        }
+      
     }
 }

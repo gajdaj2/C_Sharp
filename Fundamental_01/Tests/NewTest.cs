@@ -13,7 +13,7 @@ namespace Tests
     {
 
         public TestDataContainer data;
-
+        public string sut;
 
         [SetUp]
         public void SetUp()
@@ -30,6 +30,7 @@ namespace Tests
             data = new TestDataContainer();
             data.AddNewTestData(data1);
             data.AddNewTestData(data2);
+            
         }
 
         [Test]
@@ -42,6 +43,26 @@ namespace Tests
         public void ShoudBeFirstNameJakub()
         {
             Assert.AreEqual("Jakub", data.Lista[1]);
+        }
+
+        [Test,Order(1)]
+        [Category("Json")]
+       
+        public void AShouldBSeralization()
+        {
+            sut = data.SerializeTestList("1111");
+            Console.WriteLine(sut);
+        }
+
+        [Test,Order(2)]
+        [Category("Json")]
+        public void VShouldBDeseralization()
+        {
+            List<TestData> sutt = data.Deserialization(sut);
+            foreach (var item in sutt)
+            {
+                Console.WriteLine(item.Name+" "+item.Value);
+            } 
         }
     }
 }
