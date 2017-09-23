@@ -1,35 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
-using System.Configuration.Assemblies;
-using System.Data.SqlClient;
 
-namespace DapperDemo.Dapper
+namespace MicroOrmDemo.DataLayer.Dapper
 {
     public class ContactRepository : IContactRepository
     {
 
-        private IDbConnection db = new SqlConnection(@"Data Source=D:\Repos\C_S\C_Sharp\DapperDemo\Test2.sqlite;Password=kondor");
+
+        private IDbConnection db = new SqlConnection(@"Data Source=ANNA\SQLEXPRESS;Initial Catalog=ContactsDB;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
         public Contact Add(Contact contact)
         {
-            throw new NotImplementedException();
+            var sql =
+                "INSERT INTO Contacts(FirstName,LastName,Email,Company,Title) VALUES(@FirstName,@LastName,@Email,@Company,@Title)" +
+                 "SELECT CAST(SCOPE_IDENTITY() as int)";
+            var id = this.db.Query<int>(sql, contact).Single();
+            contact.Id = id;
+            return contact;
         }
 
-        public Contact Find(int id)
+        public IContactRepository Find(int id)
         {
             throw new NotImplementedException();
         }
 
         public List<Contact> GetAll()
         {
-            
-            var ret =  db.Query<Contact>("SELECT * FROM Contacts").ToList();
-            return ret;
+            return this.db.Query<Contact>("select * from Contacts").ToList();
         }
 
         public Contact GetFullContact(int id)
