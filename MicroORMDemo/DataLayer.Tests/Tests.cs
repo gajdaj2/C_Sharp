@@ -41,18 +41,56 @@ namespace MicroOrmDemo.DataLayer.Tests
         //
         #endregion
 
+
+
         [TestMethod]
-        public void get()
+        public void ShouldUpdateContact()
         {
-            IContactRepository repo = CreateRepository();
+            IContactRepository repo = CreateContactRepository();
+            var contact = repo.Find(1);
+            contact.FirstName = "jakub222";
+            repo.Update(contact);
+            IContactRepository repo2 = CreateContactRepository();
+            var con = repo2.Find(1);
+            con.FirstName.Should().Be("jakub222");
+            
+        }
+
+
+        [TestMethod]
+        public void ShouldGetOneContact()
+        {
+            IContactRepository repo = CreateContactRepository();
+            var contact = repo.GetFullContact(1);
+            contact.ShouldHave<Contact>();
+        }
+        [TestMethod]
+        public void ShouldGetAllContacts()
+        {
+            IContactRepository repo = CreateContactRepository();
             var contacts = repo.GetAll();
             contacts.Should().NotBeNull();
-            contacts.Count.Should().Be(6);
+            contacts.Count.Should().Be(8);
+        }
+
+        [TestMethod]
+        public void ShouldAddNewContact()
+        {
+            IContactRepository repo = CreateContactRepository();
+            Contact cont = new Contact
+            {
+                FirstName = "Jan",
+                LastName = "Kaleciak",
+                Company = "GE",
+                email = "jan.kaleciak@ge.com",
+                Title = "Mr."
+            };
+            repo.Add(cont);
         }
 
 
 
-        private IContactRepository CreateRepository()
+        private IContactRepository CreateContactRepository()
         {
             return new Dapper.ContactRepository();
         }
