@@ -37,7 +37,7 @@ namespace MicroOrmDemo.DataLayer.Dapper
 
         public Contact GetFullContact(int id)
         {
-            throw new NotImplementedException();
+            return this.db.Query<Contact>("select 8 from Contacts where Id=@Id",new {Id=id}).SingleOrDefault();
         }
 
         public void Remove(int id)
