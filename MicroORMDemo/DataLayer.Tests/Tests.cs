@@ -42,6 +42,21 @@ namespace MicroOrmDemo.DataLayer.Tests
         #endregion
 
 
+
+        [TestMethod]
+        public void ShouldUpdateContact()
+        {
+            IContactRepository repo = CreateContactRepository();
+            var contact = repo.Find(1);
+            contact.FirstName = "jakub222";
+            repo.Update(contact);
+            IContactRepository repo2 = CreateContactRepository();
+            var con = repo2.Find(1);
+            con.FirstName.Should().Be("jakub222");
+            
+        }
+
+
         [TestMethod]
         public void ShouldGetOneContact()
         {

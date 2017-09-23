@@ -25,9 +25,9 @@ namespace MicroOrmDemo.DataLayer.Dapper
             return contact;
         }
 
-        public IContactRepository Find(int id)
+        public Contact Find(int id)
         {
-            throw new NotImplementedException();
+            return this.db.Query<Contact>("select * from Contacts where Id=@Id", new { Id = id }).SingleOrDefault();
         }
 
         public List<Contact> GetAll()
@@ -37,7 +37,7 @@ namespace MicroOrmDemo.DataLayer.Dapper
 
         public Contact GetFullContact(int id)
         {
-            return this.db.Query<Contact>("select 8 from Contacts where Id=@Id",new {Id=id}).SingleOrDefault();
+            return this.db.Query<Contact>("select * from Contacts where Id=@Id",new {Id=id}).SingleOrDefault();
         }
 
         public void Remove(int id)
@@ -52,7 +52,13 @@ namespace MicroOrmDemo.DataLayer.Dapper
 
         public Contact Update(Contact contact)
         {
-            throw new NotImplementedException();
+            var sql = "Update Contacts set FirstName = @FirstName, LastName = @LastName" +
+                ", Email = @Email, Company = @Company, Title = @Title where Id = @Id";
+
+          //  this.db.Execute(sql, contact);
+
+            return this.db.Query<Contact>(sql,contact).SingleOrDefault();
+            
         }
     }
 }

@@ -8,7 +8,7 @@ namespace MicroOrmDemo.DataLayer
 {
     public interface IContactRepository
     {
-        IContactRepository Find(int id);
+        Contact Find(int id);
         List<Contact> GetAll();
         Contact Add(Contact contact);
         Contact Update(Contact contact);
