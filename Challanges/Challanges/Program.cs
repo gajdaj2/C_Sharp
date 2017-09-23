@@ -11,15 +11,9 @@ namespace Challanges
     {
         static void Main(string[] args)
         {
-
-            string[] a = new string[] { "1", "2", "3","", "4", "5", "6", "7","8", "9", "10" };
-            ArrayRevert arr = new ArrayRevert();
-
-            arr.Reverse(a);
-            foreach (var item in a)
-            {
-                Console.WriteLine(item);
-            }
+            double[] temp = new double[] { 10,0,11,3,4,5,-2,0,3,6,-3,3, 0,0 };
+            Temperature t = new Temperature();
+            t.FindMaxMinTemp(temp);
             Console.ReadLine();
         }
     }
