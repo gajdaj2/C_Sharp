@@ -25,6 +25,12 @@ namespace TestDataJSonOrm.TestDataRepository
             return data;
         }
 
+        public TestData Find(int build_id)
+        {
+            var sqlFind = "select * from TESTDATA WHERE Build_Id=@Build_Id";
+            return this.db.Query<TestData>(sqlFind, new { Build_id = build_id }).SingleOrDefault();
+        }
+
         public TestData GetAll()
         {
             throw new NotImplementedException();

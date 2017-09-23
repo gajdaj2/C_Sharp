@@ -13,5 +13,6 @@ namespace TestDataJSonOrm.IModel
         TestData GetAll();
         TestData Update(int build_id);
         TestData Remove(int build_id);
+        TestData Find(int build_id);
     }
 }
