@@ -44,6 +44,12 @@ namespace MicroOrmDemo.DataLayer.Tests
 
 
         [TestMethod]
+        public void ShouldDeleteContact()
+        {
+            IContactRepository repo = CreateContactRepository();
+            repo.Remove(9);
+        }
+        [TestMethod]
         public void ShouldUpdateContact()
         {
             IContactRepository repo = CreateContactRepository();

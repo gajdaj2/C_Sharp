@@ -42,7 +42,9 @@ namespace MicroOrmDemo.DataLayer.Dapper
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            var sql = "delete from Contacts where Id=@Id";
+            this.db.Query<Contact>(sql, new { Id = id }).SingleOrDefault();
+            Console.WriteLine("Contact removed !!!!");
         }
 
         public void Save(Contact contact)
