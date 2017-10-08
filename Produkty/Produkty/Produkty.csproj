@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Create.cs" />
+    <Compile Include="GuiTest.cs" />
+    <Compile Include="OdataTest.cs" />
     <Compile Include="ProductA.cs" />
     <Compile Include="ProductB.cs" />
     <Compile Include="ProductBase.cs" />

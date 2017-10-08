@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace Produkty
             Console.WriteLine("Product A");
         }
 
+
+       
         public void Create(ProductBase a)
         {
             Console.WriteLine(a.Name+" Created new");

@@ -7,18 +7,13 @@ using System.Threading.Tasks;
 
 namespace Produkty
 {
-    public class ProductB:ProductBase,Create
+    public class OdataTest : Create
     {
-        public ProductB()
-        {
-            Console.WriteLine("Product B");
-        }
 
-
-        
+       
         public void Create(ProductBase a)
         {
-            Console.WriteLine("Create "+a);
+            Console.WriteLine("Prouct Test Create "+a.Name);
         }
     }
 }
